@@ -1,6 +1,8 @@
 package curso.microforum.jee.spring.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -31,6 +33,16 @@ public class RegionDAOImpl implements RegionsDAO {
 	public Regions read(long id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void insert(Regions region) {
+		String sql = "INSERT INTO REGIONS (REGION_ID, REGION_NAME) VALUES (?, ?)";
+		
+		this.jdbcTemplate.update(sql, region.getId(), region.getName());
+	
+		
 	}
 
 
