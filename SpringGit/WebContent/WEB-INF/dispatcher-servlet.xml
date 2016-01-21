@@ -12,14 +12,19 @@
 
 	<context:component-scan base-package="curso.microforum.jee.spring" />
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
+	
+	
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/" />
 		<property name="suffix" value=".jsp" />
+		<property name="order" value="1" />
 	</bean>
-
+				 
+	<bean id="myviewresolver" class="curso.microforum.jee.spring.ExeJsViewResolver">
+  		<property name="order" value="0" />
+	</bean>
+	
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
